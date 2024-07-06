@@ -18,7 +18,7 @@ app.use(
 app.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://midorchard-client.vercel.app"
+    "*"
   );
   res.header("Access-Control-Allow-Methods", ["GET", "POST", "PUT", "DELETE"]);
   res.header("Access-Control-Allow-Headers", ["Content-Type", "Authorization"]);
@@ -34,10 +34,10 @@ app.use(express.json());
 
 app.use(express.static("../dist"));
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname.slice(0,-4), "dist", "index.html"))
+  res.sendFile(path.resolve(__dirname, "frontend" ,"dist", "index.html"))
 });
 app.get("/*", (req, res) => {
-  res.sendFile(path.resolve(__dirname.slice(0,-4), "dist", "index.html"))
+  res.sendFile(path.resolve(__dirname, "frontend" ,"dist", "index.html"))
 });
 app.options("*", cors());
 
